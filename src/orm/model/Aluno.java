@@ -1,14 +1,17 @@
 package orm.model;
 
-import java.util.Calendar;
+
 
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Alunos")
 public class Aluno {
-	
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String nome;
 	private String email;
@@ -59,4 +62,17 @@ public class Aluno {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	
+    @Override
+    public String toString() {
+        return "\n\nid:" + id +
+                ",\nnome:" + nome +
+                ",\nemail:" + email +
+                ",\nCPF:" + CPF +
+                ",\ndataNascimento:" + dataNascimento +
+                ",\nnaturalidade:" + naturalidade +
+                ",\nendereco:" + endereco;
+    }
+	
+
 }

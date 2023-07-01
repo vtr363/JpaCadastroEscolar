@@ -9,19 +9,21 @@ import javax.persistence.Query;
 
 import orm.model.Aluno;
 
-public class BuscarAlunos {
+public class ListarAlunos {
 	public static void main(String[] args) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("tarefas");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("alunos");
         EntityManager manager = factory.createEntityManager();
 
-        // 
-        String sql = "select a from Tarefa as a where a.finalizado = paramFinalizado";
+         
+        String sql = "SELECT a FROM Aluno AS a";
 
         Query query = manager.createQuery(sql);
-        query.setParameter("paramFinalizado", true);
 
         @SuppressWarnings("unchecked")
         List<Aluno> lista = query.getResultList();
         
+        for (Aluno aluno : lista) {
+			System.out.println(aluno.toString());
+		}
     }
 }

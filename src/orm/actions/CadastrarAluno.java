@@ -18,30 +18,31 @@ public class CadastrarAluno {
 		aluno.setNome(sc.nextLine());
 		
 		System.out.println("CPF: ");
-		aluno.setCPF(null);
+		aluno.setCPF(sc.nextLine());
 		
 		System.out.println("Email: ");
-		aluno.setEmail(null);
+		aluno.setEmail(sc.nextLine());
 		
 		System.out.println("Endereço: ");
-		aluno.setEndereco(null);
+		aluno.setEndereco(sc.nextLine());
 		
 		System.out.println("Naturalidade: ");
-		aluno.setNaturalidade(null);
+		aluno.setNaturalidade(sc.nextLine());
 		
 		System.out.println("DataNascimento: ");
-		aluno.setDataNascimento(null);
+		aluno.setDataNascimento(sc.nextLine());
 		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("tarefas");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("alunos");
 		EntityManager manager = factory.createEntityManager();
 		
 		manager.getTransaction().begin();
 		manager.persist(aluno);
 		manager.getTransaction().commit();
 		
-		System.out.println("Aluno cadastrado, ID: "+aluno.getId());
+		System.out.println("Aluno cadastrado, ID: "+aluno.toString());
 		
-		manager.close();
-		factory.close();
+		sc.close();
+        manager.close();
+        factory.close();
 	}
 }
